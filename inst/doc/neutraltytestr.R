@@ -11,7 +11,7 @@ s <- neutralitytest(VAFselection, fmin = 0.1, fmax = 0.25)
 summary(s)
 
 ## ------------------------------------------------------------------------
-n <- neutralitytest(VAFneutral,fmin = 0.1, fmax = 0.25)
+n <- neutralitytest(VAFneutral, read_depth = 100.0, cellularity = 0.8, rho = 0.0, ploidy = 2)
 summary(n)
 
 ## ---- fig.show='hold',fig.width = 4, fig.height=3, warning = FALSE, fig.align='center'----

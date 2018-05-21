@@ -1,17 +1,18 @@
 # neutralitytestr
 
-[![Travis-CI Build Status](https://travis-ci.org/marcjwilliams1/neutralitytestr.svg?branch=master)](https://travis-ci.org/marcjwilliams1/neutralitytestr)
-
 This is an R package to analyse Variant Allele Frequency (VAF) distributions as reported from high throughput cancer sequencing. It reports 4 summary statistics and associated p-values based on a neutral model of tumour evolution, as well as functions to plot the VAF histogram and model fits.
 
 ## Getting Started
-To download the package you will need the ```devtools``` package. Once this is installed you can then download the ```neutralitytestr``` package with the command:
+You can download the package from [CRAN](https://cran.r-project.org/package=neutralitytestr) in the usual way.
+``` r
+install.packages(neutralitytestr)
+library(neutralitytestr)
+```
+
+
+To download the latest development version you'll need to use the ```devtools``` package:
 ```R
 devtools::install_github("marcjwilliams1/neutralitytestr")
-```
-In your R session you can then start using the package with the usual command
-```R
-library(neutralitytestr)
 ```
 
 ## Analysis
@@ -47,10 +48,10 @@ lsq_plot(out)
 normalized_plot(out)
 ```
 
-We can do the same with the VAFselection data:
+We can also input the read depth, cellularity, overdispersion rho and ploidy and let the package calculate an appropriate upper integration limit by considering the expected standard deviation of the clonal peak. Using this on the VAFselection data we would do the following:
 
 ```R
-out <- neutralitytest(VAFselection, fmin = 0.1, fmax = 0.25)
+out <- neutralitytest(VAFselection, read_depth = 100.0, cellularity = 0.8, rho = 0.0, ploidy = 2)
 plot_all(out) #this will plot all 3 of the above plots and combine into 1 figure.
 ```
 
