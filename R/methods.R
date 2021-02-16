@@ -2,12 +2,14 @@
 #'
 #' \code{neutralitytest} returns a neutralitytest object which contains the result of
 #' various test statistics to test for neutrality as described in Williams et al. Nature Genetics 2018.
+#' WARNING: This package has been superseded by MOBSTER, see Caravagna et al. Nature Genetics 2020.
+#'
 #'
 #' @param VAF Vector of variant allele frequencies (VAFs) from a deep sequencing experiment,
 #' numbers should be between 0 and 1
 #' @param fmin Minimum VAF of integration range, default is 0.1
 #' @param fmax Maximum VAF of integration range, default is 0.25
-#' @param read_depth Read depth of sample, if this is specified it will be used to calculate an approptiate integration range.
+#' @param read_depth Read depth of sample, if this is specified it will be used to calculate an appropriate integration range.
 #' default is NULL in which case the default or inputted fmin and fmax will be used.
 #' @param rho Overdispersion of sample if known, default is 0.0. Will be used to calculate integration range if read_depth != NULL
 #' @param cellularity Cellularity of sample, default is 1.0. Will be used to calculate integration range if read_depth != NULL
@@ -24,6 +26,8 @@
 #' neutralitytest(VAFneutral, read_depth = 100.0, cellularity = 0.8)
 #' @export
 neutralitytest <- function(VAF, fmin = 0.1, fmax = 0.25, read_depth = NULL, rho = 0.0, cellularity = 1.0, ploidy = 2) {
+
+  message("This package has been superseded by MOBSTER, see Caravagna et al. Nature Genetics 2020.")
 
   if (!is.null(read_depth)){
     message("Using inputted read depth to calculate integration range")
